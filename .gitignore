@@ -1,0 +1,25 @@
+
+
+# Docusaurus
+.docusaurus/
+build/
+node_modules/
+.cache-loader/
+
+# Editors
+.DS_Store
+.idea/
+.vscode/
+.lightning_studio/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+
+# Env
+.env
+.env.local
