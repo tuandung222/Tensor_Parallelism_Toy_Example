@@ -10,7 +10,13 @@ const parts = [
   ['00', 'Vì sao cần Tensor Parallelism', 'Bộ nhớ một GPU không vừa mô hình lớn. Phân biệt DP, TP, PP, FSDP. Khi nào chọn TP.', '/docs/00-tai-sao/01-overview'],
   ['01', 'Toán học của Tensor Parallelism', 'Phép nhân ma trận shard cột và shard hàng. Derivation Y = XW. All-reduce, all-gather, reduce-scatter.', '/docs/01-toan-hoc/01-overview'],
   ['02', 'PyTorch Distributed primitives', 'ProcessGroup, NCCL, DeviceMesh và DTensor với Replicate, Shard, Partial placement.', '/docs/02-pytorch-distributed/01-overview'],
-  ['03', 'Tensor Parallelism cho MLP', 'Megatron-style Col-then-Row pattern. SwiGLU với ba linear w1, w2, w3. Walkthrough toy simple model.', '/docs/03-tp-cho-mlp/01-overview'],
+  ['03', 'Tensor Parallelism cho MLP', 'Megatron Col-then-Row pattern. SwiGLU với ba linear w1, w2, w3. Walkthrough toy simple model.', '/docs/03-tp-cho-mlp/01-overview'],
+  ['04', 'Tensor Parallelism cho Self-Attention', 'Shard theo head, không theo head_dim. Pattern Col-Col-Col-Row cho QKVO. GQA và MQA với TP.', '/docs/04-tp-cho-attention/01-overview'],
+  ['05', 'Embedding và LM Head', 'Embedding shard vocab. LM Head với loss_parallel để tính cross-entropy không all-gather logits.', '/docs/05-embedding-lm-head/01-overview'],
+  ['06', 'Sequence Parallelism', 'Shard chiều sequence ở zone norm và residual. AllGather + ReduceScatter thay AllReduce.', '/docs/06-sequence-parallel/01-overview'],
+  ['07', '2D Parallelism với FSDP', 'Kết hợp TP intra-layer với FSDP shard parameter qua DP mesh. Mixed precision và activation checkpoint.', '/docs/07-2d-parallelism-fsdp/01-overview'],
+  ['08', 'Walkthrough Llama-3 toy', 'Đọc đầy đủ model.py, parallelism.py, train.py của toy LLM. End-to-end một step với placement chính xác.', '/docs/08-llama3-walkthrough/01-overview'],
+  ['09', 'Performance và Debugging', 'Overlap collective với compute, profiling, MFU, và checklist debug các bug TP/FSDP thường gặp.', '/docs/09-performance-debugging/01-overview'],
 ];
 
 function HomepageHeader(): ReactNode {

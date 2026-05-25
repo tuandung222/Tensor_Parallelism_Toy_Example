@@ -29,7 +29,17 @@ Phần 2 là PyTorch primitives. ProcessGroup, NCCL backend, DeviceMesh, DTensor
 
 Phần 3 áp dụng vào MLP. Ta học Megatron pattern Column-then-Row, hiểu vì sao SwiGLU có ba linear, và walkthrough từng dòng `01_simple_model/train.py`.
 
-Các phần tiếp theo sẽ bao gồm: Tensor Parallel cho Self-Attention (Phần 4), Embedding và LM head (Phần 5), Sequence Parallelism (Phần 6), 2D Parallelism với FSDP (Phần 7), walkthrough đầy đủ `02_large_language_model/` (Phần 8), và Performance/Debugging (Phần 9). Chúng ta sẽ build từng phần một.
+Phần 4 mở rộng pattern Col-then-Row sang Self-Attention, làm rõ vì sao shard theo head chứ không phải head_dim, và xử lý GQA/MQA của Llama-3.
+
+Phần 5 đi vào Embedding (shard vocab) và LM Head với `loss_parallel`, kỹ thuật để tính cross-entropy mà không cần all-gather full logits.
+
+Phần 6 giới thiệu Sequence Parallelism: shard luôn chiều sequence ở zone norm và residual, giảm activation memory thêm $P$ lần mà không tăng giao tiếp.
+
+Phần 7 kết hợp TP với FSDP thành 2D parallelism, công thức training LLM chuẩn ở scale lớn. Bao gồm mixed precision policy và activation checkpoint.
+
+Phần 8 là walkthrough đầy đủ `02_large_language_model/`: đọc kỹ `model.py`, `parallelism.py`, `train.py`, và chạy ngược một full step end-to-end với placement chính xác.
+
+Phần 9 cuối cùng là performance và debugging thực tế: overlap collective với compute, profiling và MFU, và checklist các bug thường gặp với TP/FSDP.
 
 ## Toy code đi kèm
 
